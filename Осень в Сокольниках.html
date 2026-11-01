@@ -1,0 +1,380 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Осень в Сокольниках</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&family=PT+Sans:wght@400;700&display=swap" rel="stylesheet">
+<style>
+/* Layout: one narrow reading column, sticky letter strip on top, each stop opens below the solved riddle */
+:root{
+  --paper:#F3F4EE; --card:#FFFFFF; --ink:#1D261F; --muted:#5B665D; --line:#D6DBD2;
+  --plate:#2E4A39; --plate-ink:#FFFFFF; --brass:#93600F; --good:#2E6B4A; --good-bg:#E3F0E7;
+  --bad:#A23B2E; --bad-bg:#F6E3DF; --chip:#E9ECE4; --link:#2E5A44;
+  --display:"Old Standard TT",Georgia,serif; --body:"PT Sans",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#111713; --card:#18201A; --ink:#E5EAE4; --muted:#9AA79C; --line:#2A352D;
+    --plate:#355A44; --plate-ink:#FFFFFF; --brass:#D9A64A; --good:#7CC59B; --good-bg:#1B2E24;
+    --bad:#E88C7B; --bad-bg:#33201D; --chip:#1F2922; --link:#93C9A8;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#111713; --card:#18201A; --ink:#E5EAE4; --muted:#9AA79C; --line:#2A352D;
+  --plate:#355A44; --plate-ink:#FFFFFF; --brass:#D9A64A; --good:#7CC59B; --good-bg:#1B2E24;
+  --bad:#E88C7B; --bad-bg:#33201D; --chip:#1F2922; --link:#93C9A8;
+  color-scheme:dark;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 84px)}
+body{margin:0;background:var(--paper);color:var(--ink);font:17px/1.55 var(--body);-webkit-text-size-adjust:100%}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--paper)}
+a{color:var(--link)}
+.wrap{max-width:640px;margin:0 auto;padding-block:0 64px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--paper);border-bottom:1px solid var(--line)}
+.bar-in{max-width:640px;margin:0 auto;padding-block:10px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:flex;align-items:center;gap:12px}
+.letters{display:flex;gap:6px}
+.lt{width:34px;height:40px;border-radius:6px;display:grid;place-items:center;font:700 22px/1 var(--display);background:var(--chip);color:var(--muted);border:1px dashed var(--line)}
+.lt.on{background:var(--plate);color:var(--plate-ink);border:2px solid var(--plate);outline:1.5px solid var(--plate-ink);outline-offset:-5px}
+.score{margin-left:auto;text-align:right;font-size:14px;color:var(--muted);line-height:1.2}
+.score b{display:block;font-size:20px;color:var(--ink);font-variant-numeric:tabular-nums}
+
+header.hero{padding:36px 0 8px}
+.hero h1{font:700 clamp(36px,10vw,54px)/1.02 var(--display);margin:0 0 14px;letter-spacing:-.01em;text-wrap:balance}
+.hero p{margin:0 0 12px;color:var(--muted);max-width:34em}
+.facts{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 6px;padding:0;list-style:none}
+.facts li{background:var(--chip);border-radius:999px;padding:5px 12px;font-size:15px}
+.rules{margin:22px 0 8px;padding:16px 18px;border-left:3px solid var(--brass);background:var(--card);border-radius:0 10px 10px 0}
+.rules p{margin:0 0 8px}
+.rules p:last-child{margin:0}
+
+section.stop{margin-top:18px}
+.plate{background:var(--plate);color:var(--plate-ink);border-radius:12px;padding:16px 18px 14px;box-shadow:inset 0 0 0 2px var(--plate),inset 0 0 0 4px var(--plate-ink)}
+.plate .n{font:italic 400 15px/1 var(--display);opacity:.85}
+.plate h2{font:700 clamp(25px,6.6vw,32px)/1.1 var(--display);margin:6px 0 4px;text-wrap:balance}
+.plate .addr{font-size:15px;opacity:.9}
+.links{display:flex;flex-wrap:wrap;gap:8px 16px;margin:12px 2px 0;font-size:15px}
+.way{margin:14px 0 0;color:var(--muted);font-size:16px}
+.way strong{color:var(--ink)}
+
+details.story{margin-top:16px;background:var(--card);border:1px solid var(--line);border-radius:10px}
+details.story summary{cursor:pointer;padding:13px 16px;font-weight:700;list-style:none;display:flex;justify-content:space-between;gap:10px}
+details.story summary::-webkit-details-marker{display:none}
+details.story summary::after{content:"+";font-weight:400;font-size:22px;line-height:1;color:var(--brass)}
+details.story[open] summary::after{content:"−"}
+.story-body{padding:0 18px 6px;font-family:var(--display);font-size:18.5px;line-height:1.62}
+.story-body p{margin:0 0 14px}
+
+.riddle{margin-top:44px;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px}
+.riddle .kind,.find .kind,.bonus .kind{font-size:14px;color:var(--brass);font-weight:700;margin-bottom:6px;letter-spacing:.02em}
+.riddle .text{font-family:var(--display);font-size:20px;line-height:1.5;margin:0 0 14px}
+.find{margin-top:18px;padding:16px;border-radius:12px;border:2px dashed var(--brass)}
+.find .text{font-weight:700;margin:0 0 12px}
+.ans{display:flex;gap:8px}
+.ans input{flex:1;min-width:0;font:inherit;padding:11px 12px;border-radius:8px;border:1px solid var(--line);background:var(--paper);color:var(--ink)}
+.ans button,.mini,.btn{font:inherit;cursor:pointer;border-radius:8px}
+.ans button{font-weight:700;padding:11px 16px;border:0;background:var(--plate);color:var(--plate-ink)}
+.mini{background:none;border:1px solid var(--line);color:var(--muted);font-size:15px;padding:7px 12px;margin:10px 8px 0 0}
+.ans input:focus-visible,.ans button:focus-visible,.mini:focus-visible,.btn:focus-visible,summary:focus-visible{outline:3px solid var(--brass);outline-offset:2px}
+.fb{margin:10px 0 0;font-size:16px;color:var(--bad)}
+.hint{margin:10px 0 0;font-size:16px;color:var(--muted);padding-left:12px;border-left:3px solid var(--line)}
+.solved{margin:10px 0 0;padding:10px 12px;border-radius:8px;background:var(--good-bg);font-size:16px}
+.solved b{color:var(--good)}
+.lt-inline{font:700 20px var(--display);color:var(--plate)}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .lt-inline{color:var(--brass)}}
+:root[data-theme="dark"] .lt-inline{color:var(--brass)}
+.bonus{margin-top:18px;padding:14px 16px;border-radius:10px;background:var(--chip);font-size:16px}
+.bonus p{margin:0}
+.lock{margin-top:44px;padding:18px;border:1px dashed var(--line);border-radius:12px;color:var(--muted);text-align:center;font:italic 18px var(--display)}
+
+section.finale{margin-top:56px;text-align:center}
+.word{display:flex;justify-content:center;gap:8px;margin:20px 0}
+.word .lt{width:46px;height:56px;font-size:30px}
+.finale h2{font:700 clamp(30px,8vw,42px)/1.05 var(--display);margin:0 0 10px}
+.finale > p{color:var(--muted);max-width:30em;margin:0 auto 12px}
+.finale .riddle{text-align:left}
+.closing{margin:22px auto 0;max-width:34em;text-align:left;display:grid;gap:14px}
+.closing .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+.closing h3{margin:0 0 6px;font:700 22px var(--display)}
+.closing p{margin:0 0 8px}
+.closing p:last-child{margin:0}
+.reset-wrap{text-align:center;margin-top:26px}
+.btn{font-size:15px;background:none;border:1px solid var(--line);color:var(--muted);padding:8px 14px;margin:4px}
+.btn.danger{border-color:var(--bad);color:var(--bad)}
+footer{margin-top:40px;font-size:14px;color:var(--muted)}
+footer p{margin:0 0 8px}
+@media (prefers-reduced-motion: no-preference){
+  .lt.on{animation:pop .35s ease-out}
+  @keyframes pop{0%{transform:scale(.6)}70%{transform:scale(1.08)}100%{transform:scale(1)}}
+}
+</style>
+
+<div class="bar" role="status" aria-live="polite">
+  <div class="bar-in">
+    <div class="letters" id="strip" role="group" aria-label="Собранные буквы"></div>
+    <div class="score"><b id="scoreNum">0 / 5</b>точек пройдено</div>
+  </div>
+</div>
+
+<div class="wrap">
+<header class="hero">
+  <h1>Осень в Сокольниках</h1>
+  <p>Квест по старой царской роще. Куда идти дальше, вы узнаёте, только разгадав загадку. А на каждой точке нужно что-то увидеть своими глазами: арку, указатель, вывеску, стену старой дачи.</p>
+  <ul class="facts">
+    <li>5 точек</li><li>около 3,5 км</li><li>1,5–2 часа</li><li>старт: м. «Сокольники»</li>
+  </ul>
+  <div class="rules">
+    <p><strong>Как играть.</strong> Разгадайте загадку и впишите ответ, тогда откроется точка: карта, маршрут и рассказ, который можно прочитать вслух уже на месте. Там найдите то, о чём спрашивает задание. За каждую находку дают букву, пять букв сложатся в слово для финала.</p>
+    <p>Регистр и лишние слова неважны. Застряли — берите подсказку, а после двух неверных попыток можно открыть ответ: парк недавно реконструировали, и что-то могло поменяться.</p>
+    <p>1 ноября темнеет около 16:40, лучше выйти не позже 14:30. Прогресс сохраняется, страницу можно закрывать.</p>
+  </div>
+</header>
+
+<main id="game"></main>
+
+<section class="finale" id="finale" hidden>
+  <h2>Финал</h2>
+  <p>Вот слово, которое вы собрали:</p>
+  <div class="word" id="word"></div>
+  <div id="finalRiddle"></div>
+  <div class="closing" id="closing" hidden>
+    <div class="card">
+      <h3>Картина, которую писали здесь</h3>
+      <p>Осенью 1879 года девятнадцатилетний Исаак Левитан гулял по Сокольникам и около десяти дней писал пустую аллею: высокие сосны, молодые деревья с редкой жёлтой листвой, серое небо. Однажды он пришёл, а деревья уже стояли в инее.</p>
+      <p>Женщину в чёрном на аллее дописал не Левитан. Её предложил и нарисовал его товарищ по училищу Николай Чехов, старший брат Антона Павловича. Картину купил Павел Третьяков за 100 рублей, и с неё начинается собрание Левитана в Третьяковской галерее.</p>
+      <p><a href="https://ru.wikipedia.org/wiki/Осенний_день._Сокольники" target="_blank" rel="noopener">Посмотреть картину</a></p>
+    </div>
+    <div class="card">
+      <h3>Последнее командное задание</h3>
+      <p>Откройте картину и повторите её. Найдите аллею с соснами и жёлтыми листьями. Один человек в самом тёмном пальто идёт по ней, остальные снимают сзади и чуть сбоку, как Левитан. Лучший кадр — открытка в семейный чат.</p>
+    </div>
+    <div class="card">
+      <h3>Теперь греться</h3>
+      <p>Возвращайтесь к Фонтанной площади: после реконструкции там поставили павильоны с едой и напитками под навесами. Ещё несколько киосков стоят вдоль главной аллеи к выходу.</p>
+      <p>Меню в киосках меняется. Если глинтвейна не найдётся, берите кофе, чай или сбитень, а тост скажет тот, кто разгадал больше всех загадок.</p>
+    </div>
+  </div>
+</section>
+
+<div class="reset-wrap" id="resetWrap">
+  <button class="btn" id="reset" type="button">Начать квест заново</button>
+</div>
+
+<footer>
+  <p>Старые фото открываются по ссылкам у каждой точки, это карта старых снимков PastVu. Ссылка «На карте» ищет место в Яндекс Картах.</p>
+  <p>Загадки и задания составлены по открытым источникам. Парк обновляли в 2025 году, поэтому если на месте всё выглядит иначе, смело открывайте ответ.</p>
+</footer>
+</div>
+
+<script>
+const LETTERS = ["О","С","Е","Н","Ь"];
+const MAP = q => `https://yandex.ru/maps/?ll=37.6790%2C55.7950&z=15&text=${encodeURIComponent(q)}`;
+const PASTVU = (lat,lng) => `https://pastvu.com/?g=${lat},${lng}&z=17`;
+const STOPS = [
+{
+  riddle:"Царь Алексей Михайлович так любил охоту с ловчими птицами, что сам написал для неё устав — «Урядник сокольничья пути». Людей, которые растили и обучали царских птиц, селили здесь, в своей слободе. Как их называли? От этого слова и пошло имя парка.",
+  rAns:["сокольник","сокол"], rHint:"Птица быстрая, хищная, с загнутым клювом. Название парка вы и так знаете.", rReveal:"Сокольники — царские сокольничие",
+  title:"Главный вход", addr:"Сокольническая площадь, колоннада у входа в парк",
+  map:"Главный вход парк Сокольники", lat:55.7908, lng:37.6782,
+  way:"От метро «Сокольники» около 5 минут: выходите к Сокольнической площади и идите к белой колоннаде.",
+  find:"Пройдите сквозь колоннаду главного входа. Какой формы проходы в ней: прямоугольные, полукруглые или стрельчатые?",
+  fAns:["полукругл","кругл","арк","арочн"], fHint:"Посмотрите, чем заканчиваются проходы сверху: прямой линией, острым углом или дугой.", fReveal:"Полукруглые арки",
+  story:[
+    "Мы стоим у ворот бывшей царской охоты. Ещё в XVI веке австрийский посол Сигизмунд Герберштейн описывал, как в этих лесах охотятся великие князья. А в XVII веке рядом жили сокольничие — люди, которые растили и обучали ловчих птиц для государя.",
+    "Главным охотником был царь Алексей Михайлович, отец Петра I. Он написал «Урядник сокольничья пути» — подробный устав соколиной охоты, с церемониями и правилами. Отсюда и имя: Сокольничья слобода, Сокольничья роща, Сокольники.",
+    "Роща долго принадлежала казне. Дворяне устраивали здесь гулянья, сюда приезжали императоры и императрицы. В середине XIX века город получил право распоряжаться рощей, а в конце 1870-х она стала городским парком.",
+    "В 1931 году Сокольники объявили парком культуры и отдыха. Сейчас площадь парка больше 500 гектаров. Это примерно два с половиной княжества Монако.",
+    "Колоннаду главного входа отреставрировали при последней реконструкции, в 2025 году. Отсюда начинается главная аллея — по ней мы и пойдём к сердцу парка."
+  ],
+  bonus:"Общее фото в арке колоннады. Задача: все, кроме фотографа, изображают соколов — руки-крылья, взгляд хищный."
+},
+{
+  riddle:"Идите по главной аллее до места, где вода бьёт кольцом, а от круга веером расходятся лесные дороги. Как называется эта площадь?",
+  rAns:["фонтан","круг"], rHint:"Вода, которая бьёт струями вверх. Зимой её накрывают настилом и ставят ёлку.", rReveal:"Фонтанная площадь",
+  title:"Фонтанная площадь", addr:"Сокольнический круг, в конце главной аллеи",
+  map:"Фонтанная площадь Сокольники", lat:55.7935, lng:37.6775,
+  way:"Прямо по главной аллее, 5–7 минут. Впереди будет круглая площадь с фонтаном и амфитеатром вокруг.",
+  find:"От круга расходятся просеки, и у шести из них вместо имени номер: 1-й, 2-й… 6-й Лучевой. Найдите указатель единственного просека с настоящим названием. Какой месяц в нём спрятан?",
+  fAns:["май"], fHint:"Месяц весенний, с ландышами и демонстрациями.", fReveal:"Майский просек",
+  story:[
+    "Посмотрите вокруг: от круга веером, как лучи, расходятся просеки. Их прорубали ещё в те времена, когда здесь была царская роща. Шесть называются по номерам, Лучевые, а седьмой — Майский.",
+    "С Майским просеком связана история про Петра I. Его друзья-немцы из Немецкой слободы привыкли встречать весну по своей традиции, пикником на природе в начале мая. По одной из версий, Пётр приказал прорубить для этого просеку, а место поначалу так и называли — «немецкие столы».",
+    "Майские гулянья в Сокольниках прижились надолго. Сначала гуляли дворяне, потом все остальные. А в конце XIX века на маёвки в здешние рощи стали тайком собираться рабочие, и праздник стал ещё и политическим.",
+    "Фонтан построили в 1958 году: круглая чаша и кольцо струй. В 2025 году его облицевали гранитом заново, а вокруг обустроили амфитеатр. Зимой чашу накрывают настилом и ставят на нём главную ёлку парка.",
+    "Запомните это место: в финале квеста мы вернёмся сюда греться."
+  ],
+  bonus:"Встаньте в центр круга спиной друг к другу, каждый лицом к своему просеку. Назовите, куда, по-вашему, он ведёт. Потом проверьте по карте, кто угадал."
+},
+{
+  riddle:"Ищите неподалёку от круга домик, где в тишине ходят конём и ферзём, а заодно двигают простые круглые фишки. Это клуб, названный в честь двух игр. Впишите первую из них.",
+  rAns:["шахмат"], rHint:"Игра, где есть мат и пат, а у короля всего одна клетка на ход.", rReveal:"Шахматно-шашечный клуб",
+  title:"Шахматно-шашечный клуб", addr:"Рядом с Сокольническим кругом, у начала 6-го Лучевого просека",
+  map:"Шахматно-шашечный клуб Сокольники", lat:55.7938, lng:37.6800,
+  way:"Пара минут от фонтана. Если не видно сразу, откройте ссылку «На карте».",
+  find:"Над входом или на табличке названы обе игры. Впишите вторую — ту, что не шахматы.",
+  fAns:["шашк","шашеч"], fHint:"Фишки круглые, а «дамкой» становятся, когда дойдут до края доски.", fReveal:"Шашки",
+  story:[
+    "Летом 1959 года, за пару недель до знаменитой американской выставки, в Сокольниках прошла советская выставка «Для тебя, советский человек!». Краснодарский край привёз на неё целый домик. После выставки домик остался в парке и стал шахматно-шашечным клубом.",
+    "Клуб быстро стал знаменитым. Здесь играли и учились будущие гроссмейстеры, а летом за столами под деревьями сидели пенсионеры, студенты и случайные прохожие — сыграть с незнакомцем в Сокольниках было обычным делом.",
+    "В 1970-е годы здесь тренировал шахматистов Натан Щаранский. Позже он стал одним из самых известных советских «отказников», отсидел в лагере и уехал в Израиль, где стал министром.",
+    "По рассказам, летом 1959 года для американской делегации здесь устраивали показательные партии. Так что этот домик тоже немного поучаствовал в холодной войне, на доске."
+  ],
+  bonus:"Мини-турнир без доски: по очереди называйте шахматные термины. Кто запнётся или повторится, тот выбывает. Победитель несёт в финале самый тёплый стаканчик."
+},
+{
+  riddle:"Купец-миллионер и городской голова, при котором в Москве пустили конку, зажгли первые электрические фонари и открыли Политехнический музей, в 1860 году построил здесь деревянную дачу. Его фамилия похожа на слово «лямка». Как его звали?",
+  rAns:["лямин"], rHint:"Иван Артемьевич Л…", rReveal:"Иван Лямин, дача Лямина",
+  title:"Дача Лямина", addr:"6-й Лучевой просек, 21",
+  map:"Дача Лямина Сокольники 6-й Лучевой просек 21", lat:55.7975, lng:37.6880,
+  way:"По 6-му Лучевому просеку от круга, около 12–15 минут. Ориентир — старинный дом с резьбой за оградой. Удобнее идти по ссылке «На карте».",
+  find:"Посмотрите на главный дом. Из какого материала он построен?",
+  fAns:["дерев","брев","брус","доск"], fHint:"Тот же материал, из которого сделаны сосны вокруг.", fReveal:"Из дерева",
+  story:[
+    "Иван Артемьевич Лямин был московским купцом и городским головой. При нём в Москве пустили конку, поставили первые электрические фонари и открыли Политехнический музей. В отставку он ушёл из-за оплошности, которую трудно себе представить сегодня: пришёл представляться новому губернатору во фраке, а не в мундире.",
+    "Дачу он построил в 1860 году. Двухэтажный деревянный дом с резными наличниками, террасами, водонапорной башней в готическом стиле. Вокруг был целый маленький мир: зимний сад, грот, фонтан, пруд с горбатым мостиком.",
+    "После революции семья Ляминых уехала во Францию, а в доме открыли первую советскую лесную школу — для детей со слабым здоровьем. Зимой 1919 года здесь жила и лечилась Надежда Крупская, жена Ленина.",
+    "19 января 1919 года Ленин поехал сюда к жене. Вёз бидон молока, тогда большую редкость, с расчётом, чтобы хватило и детям, и подарки для детского праздника. Уже в темноте на Сокольническом шоссе машину остановили налётчики Якова Кошелькова. Вождя высадили, отобрали автомобиль, документы и браунинг и уехали.",
+    "Машину бросили через час. Кошелькова чекисты искали полгода и застрелили в июне 1919 года. При обыске нашли браунинг Ленина и дневник, где налётчик жалел, что упустил такую добычу.",
+    "Потом здесь были детский санаторий, ясли, отдел Некрасовской библиотеки. Сейчас дом готовят к реставрации: обновить должны фундамент, крышу, кирпичные и деревянные детали."
+  ],
+  bonus:"Разыграйте сцену на Сокольническом шоссе: один — налётчик, другой — пассажир с бидоном молока. Снимите на видео 15 секунд. Оскар получает самый убедительный налётчик."
+},
+{
+  riddle:"Летом 1959 года вице-президент США Никсон и Хрущёв спорили здесь, чья жизнь лучше. Спорили прямо в образцовом американском доме, разрезанном пополам, — у плиты и холодильника. Как назвали этот спор?",
+  rAns:["кухон","кухн"], rHint:"Спорили в комнате, где готовят еду.", rReveal:"Кухонные дебаты",
+  title:"Выставочный центр «Сокольники»", addr:"Павильоны в южной части парка, у Сокольнического Вала",
+  map:"Конгрессно-выставочный центр Сокольники", lat:55.7930, lng:37.6850,
+  way:"Обратно в сторону главного входа, по навигатору 15–20 минут. Откройте ссылку «На карте» и идите к ближайшему павильону.",
+  find:"Дойдите до павильонов. Как называется комплекс на вывеске? Впишите главное слово.",
+  fAns:["сокольник","квц","выстав","экспо","конгрес"], fHint:"Слово то же, что и название парка.", fReveal:"Выставочный центр «Сокольники»",
+  story:[
+    "24 июля 1959 года здесь открылась Американская национальная выставка. За 42 дня её посетили больше 2,7 миллиона человек. Для многих москвичей это была первая встреча с Америкой вживую.",
+    "Центром выставки был огромный геодезический купол инженера Бакминстера Фуллера. После выставки Советский Союз его купил.",
+    "Главная сцена разыгралась в день открытия. Никсон водил Хрущёва по образцовому американскому дому, разрезанному пополам, чтобы было видно все комнаты. На кухне, у бытовой техники, они заспорили: чей образ жизни лучше и чья техника сильнее. Спор показали по телевидению в обеих странах, и он вошёл в историю как «кухонные дебаты».",
+    "На той же выставке Хрущёва угостили пепси-колой. Фото советского лидера со стаканчиком американской газировки обошло мировые газеты.",
+    "После 1959 года павильоны стали постоянной выставочной площадкой. Сейчас здесь десять павильонов. А домик, который за две недели до американцев привёз Краснодарский край, вы уже видели — это шахматный клуб."
+  ],
+  bonus:"Устройте свои кухонные дебаты: двое за 30 секунд доказывают, что лучше — кофе или глинтвейн. Остальные голосуют. Победивший напиток и берём в финале."
+}
+];
+const FINAL = {
+  riddle:"Сложите буквы в слово. С него начинается название картины, которую в 1879 году написали здесь, в Сокольниках. Её купил Третьяков, и она до сих пор висит в Третьяковской галерее. Впишите фамилию художника.",
+  rAns:["левитан"], rHint:"Автор «Золотой осени» и «Над вечным покоем». Имя — Исаак.", rReveal:"Исаак Левитан, «Осенний день. Сокольники»"
+};
+
+const KEY = "kvest-sokolniki-osen-v1";
+let state = {};
+try { state = JSON.parse(localStorage.getItem(KEY) || "{}") || {}; } catch(e){ state = {}; }
+function save(){ try { localStorage.setItem(KEY, JSON.stringify(state)); } catch(e){} }
+const norm = s => s.toLowerCase().replace(/ё/g,"е").replace(/[^a-zа-я0-9]/g,"");
+
+function answerBox(o){
+  const box = document.createElement("div");
+  box.className = o.cls;
+  box.innerHTML = `<div class="kind">${o.kind}</div><p class="text">${o.text}</p>`;
+  if(state[o.key]){
+    const s = document.createElement("div"); s.className="solved"; s.innerHTML = o.solvedHtml(); box.appendChild(s);
+    return box;
+  }
+  const form = document.createElement("form"); form.className="ans";
+  form.innerHTML = `<input id="in-${o.key}" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Ваш ответ" aria-label="Ваш ответ"><button type="submit">Проверить</button>`;
+  const fb = document.createElement("p"); fb.className="fb"; fb.hidden=true;
+  const tools = document.createElement("div");
+  const hintBtn = document.createElement("button"); hintBtn.type="button"; hintBtn.className="mini"; hintBtn.textContent="Подсказка";
+  const revealBtn = document.createElement("button"); revealBtn.type="button"; revealBtn.className="mini"; revealBtn.textContent="Открыть ответ"; revealBtn.hidden=true;
+  tools.append(hintBtn, revealBtn);
+  const hint = document.createElement("p"); hint.className="hint"; hint.hidden=true; hint.textContent=o.hint;
+  let tries = 0;
+  form.addEventListener("submit", e=>{
+    e.preventDefault();
+    const v = norm(form.querySelector("input").value);
+    if(!v) return;
+    if(o.ans.some(a=>v.includes(a))){ state[o.key]=true; save(); o.onSolve(); }
+    else { tries++; fb.hidden=false; fb.textContent = tries<2 ? "Не то. Попробуйте ещё раз." : "Снова мимо. Можно взять подсказку или открыть ответ."; if(tries>=2) revealBtn.hidden=false; }
+  });
+  hintBtn.addEventListener("click",()=>{ hint.hidden=false; hintBtn.hidden=true; });
+  revealBtn.addEventListener("click",()=>{ state[o.key]=true; state[o.key+"_rev"]=true; save(); o.onSolve(); });
+  box.append(form, fb, tools, hint);
+  return box;
+}
+
+function plural(n){ return n===1?"точка":(n>=2&&n<=4)?"точки":"точек"; }
+
+function render(){
+  const game = document.getElementById("game");
+  game.innerHTML = "";
+  let open = true;
+  STOPS.forEach((s,i)=>{
+    if(!open) return;
+    const rKey=`r${i}`, fKey=`f${i}`;
+    game.appendChild(answerBox({
+      kind:`Загадка ${i+1}: куда идём`, text:s.riddle, cls:"riddle", ans:s.rAns, hint:s.rHint, key:rKey,
+      solvedHtml:()=> `<b>${state[rKey+"_rev"]?"Ответ":"Разгадано"}:</b> ${s.rReveal}`, onSolve:render
+    }));
+    if(!state[rKey]){ open=false; return; }
+    const sec = document.createElement("section");
+    sec.className="stop";
+    sec.innerHTML = `
+      <div class="plate"><div class="n">Точка ${i+1} из ${STOPS.length}</div><h2>${s.title}</h2><div class="addr">${s.addr}</div></div>
+      <div class="links"><a href="${MAP(s.map)}" target="_blank" rel="noopener">На карте</a><a href="${PASTVU(s.lat,s.lng)}" target="_blank" rel="noopener">Старые фото рядом (PastVu)</a></div>
+      <p class="way"><strong>Как дойти:</strong> ${s.way}</p>`;
+    sec.appendChild(answerBox({
+      kind:"Найдите на месте", text:s.find, cls:"find", ans:s.fAns, hint:s.fHint, key:fKey,
+      solvedHtml:()=> `<b>${state[fKey+"_rev"]?"Ответ":"Найдено"}:</b> ${s.fReveal}. Ваша буква: <span class="lt-inline">${LETTERS[i]}</span>`,
+      onSolve:render
+    }));
+    const st = document.createElement("details"); st.className="story";
+    st.innerHTML = `<summary>Рассказ для чтения вслух</summary><div class="story-body">${s.story.map(p=>`<p>${p}</p>`).join("")}</div>`;
+    sec.appendChild(st);
+    const b = document.createElement("div"); b.className="bonus";
+    b.innerHTML = `<div class="kind">Командное задание</div><p>${s.bonus}</p>`;
+    sec.appendChild(b);
+    game.appendChild(sec);
+    if(!state[fKey]) open=false;
+  });
+  const left = STOPS.length - STOPS.filter((s,i)=>state[`f${i}`]).length;
+  if(!open && left>0){
+    const l = document.createElement("div"); l.className="lock";
+    l.textContent = `Впереди ещё ${left} ${plural(left)}. Следующая загадка откроется после находки.`;
+    game.appendChild(l);
+  }
+  const fin = document.getElementById("finale");
+  fin.hidden = !open;
+  const fr = document.getElementById("finalRiddle"); fr.innerHTML="";
+  if(open){
+    fr.appendChild(answerBox({kind:"Финальная загадка", text:FINAL.riddle, cls:"riddle", ans:FINAL.rAns, hint:FINAL.rHint, key:"final",
+      solvedHtml:()=>`<b>${state.final_rev?"Ответ":"Разгадано"}:</b> ${FINAL.rReveal}.`, onSolve:render}));
+  }
+  document.getElementById("closing").hidden = !(open && state.final);
+  renderStrip();
+}
+
+function renderStrip(){
+  const strip = document.getElementById("strip"), word = document.getElementById("word");
+  strip.innerHTML=""; word.innerHTML="";
+  let n=0;
+  LETTERS.forEach((L,i)=>{
+    const got = !!state[`f${i}`]; if(got) n++;
+    const mk=()=>{const d=document.createElement("div"); d.className="lt"+(got?" on":""); d.textContent=got?L:"·"; return d;};
+    strip.appendChild(mk()); word.appendChild(mk());
+  });
+  document.getElementById("scoreNum").textContent = `${n} / ${STOPS.length}`;
+}
+
+const resetWrap = document.getElementById("resetWrap");
+function showResetButton(){
+  resetWrap.innerHTML = `<button class="btn" id="reset" type="button">Начать квест заново</button>`;
+  document.getElementById("reset").addEventListener("click", askReset);
+}
+function askReset(){
+  resetWrap.innerHTML = `<p style="margin:0 0 6px;color:var(--muted)">Стереть все ответы и буквы?</p><button class="btn danger" id="yes" type="button">Да, начать заново</button><button class="btn" id="no" type="button">Отмена</button>`;
+  document.getElementById("yes").addEventListener("click",()=>{ state={}; save(); render(); showResetButton(); window.scrollTo({top:0}); });
+  document.getElementById("no").addEventListener("click", showResetButton);
+}
+document.getElementById("reset").addEventListener("click", askReset);
+render();
+</script>
+
+</body></html>
